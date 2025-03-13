@@ -20,6 +20,18 @@ class AuthService {
         const { email, password, name, CCCD } = data;
         return new Promise(async (resolve, reject) => {
             try {
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!email || typeof email !== 'string' || !emailRegex.test(email.trim())) {
+                    resolve({ status: false, message: "Email không đúng định dạng" });
+                    return;
+                }
+
+                const cccdRegex = /^[0-9]{12}$/;
+                if (!cccdRegex.test(CCCD.trim())) {
+                    resolve({ status: false, message: "CCCD không hợp lệ" });
+                    return;
+                }
+
                 const [existingUsers] = await db.query('SELECT * FROM user WHERE email = ?', [email]);
                 if (existingUsers.length > 0) { 
                     resolve({ status: false, message: "Email đã được dùng" });
@@ -30,11 +42,7 @@ class AuthService {
                     resolve({ status: false, message: "Người dùng đã tạo tài khoản" });
                     return;
                 }
-                if (typeof email === 'object' && email !== null) email = String(email.address);
-                if (typeof email !== 'string') {
-                    resolve({ status: false, message: "Email không đúng định dạng" });
-                    return;
-                }
+    
                 const hashedPassword = await bcrypt.hash(password, 10);
                 const [result] = await db.query(
                     'INSERT INTO user (email, password, username, CCCD) VALUES (?, ?, ?, ?)', 
