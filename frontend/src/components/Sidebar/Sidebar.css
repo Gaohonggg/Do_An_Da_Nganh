@@ -1,0 +1,135 @@
+.sideBar{
+    background-color: #A5BFCC;
+    width: 21%;
+    height: 90vh;
+    display: flex;
+    position: absolute;
+    transition: all 1s;
+    padding-top: 35px;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.sideBar ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    gap: 30px;
+}
+
+.sideBar ul li{
+    list-style: none;
+    display: flex;
+}
+
+.sideBar ul li a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+.sideBar ul li a:hover{
+    background-color: white;
+    width: 100%;
+}
+
+.sideBar ul li a.active{
+    background-color: #9AA6B2;
+}
+
+.sideBar .botbox{
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #ffffff;
+}   
+
+.sideBar .botbox .user-info{
+  display: flex; 
+  align-items: center;
+}
+
+.sideBar .botbox .userimg{
+    width: 40px;
+}
+
+.sideBar .botbox .details {
+    display: flex;
+    flex-direction: column; 
+    padding: 10px;
+  }
+
+.sideBar .botbox .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+.sideBar .botbox .email {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+  }
+
+@media (max-width:1050px) {
+    .sideBar{
+        padding-top: 30px;
+    }
+    .sideBar ul{
+        gap:15px;
+        padding: 0 15px;
+    }
+    .sideBar ul li a{
+        font-size: 1.2rem;
+    }
+    .sideBar .botbox .email{
+        font-size: 14px;
+    }
+    .sideBar .botbox .name{
+        font-size: 16px;
+
+    }
+    .sideBar .botbox .userimg{
+        width: 30px;
+    }
+}
+
+@media (max-width:900px) {
+    .sideBar{
+        padding-top: 20px;
+    }
+    .sideBar ul{
+        gap:10px;
+        padding: 0 10px;
+    }
+    .sideBar ul li a{
+        font-size: 1rem;
+    }
+    .sideBar .botbox .email{
+        font-size: 12px;
+    }
+    .sideBar .botbox .name{
+        font-size: 14px;
+
+    }
+}
+
+@media (max-width:750px) {
+    .sideBar .botbox .email{
+        font-size: 8px;
+    }
+    .sideBar .botbox .name{
+        font-size: 10px;
+    }
+}
+
+@media (max-width:550px) {
+    .sideBar .botbox .details{
+        display: none;
+    }
+}
