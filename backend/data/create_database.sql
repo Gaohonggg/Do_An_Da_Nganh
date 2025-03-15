@@ -20,13 +20,15 @@ CREATE TABLE Door (
 -- Bảng Light
 CREATE TABLE Light (
     light_id INT AUTO_INCREMENT PRIMARY KEY,
-    distance FLOAT NOT NULL
+    distance FLOAT NOT NULL,
+    brightness INT NOT NULL CHECK (brightness BETWEEN 0 AND 100)
 );
 
 -- Bảng Fan
 CREATE TABLE Fan (
     fan_id INT AUTO_INCREMENT PRIMARY KEY,
-    gesture VARCHAR(50) NOT NULL
+    gesture VARCHAR(50) NOT NULL,
+    level INT NOT NULL CHECK (level BETWEEN 0 AND 3)
 );
 
 -- Bảng Control (Lịch sử sử dụng)
@@ -35,8 +37,7 @@ CREATE TABLE Control (
     CCCD VARCHAR(20) NOT NULL,
     device_type ENUM('door', 'light', 'fan') NOT NULL,
     device_id INT NOT NULL,
-    status ENUM('ON', 'OFF', 'SET LEVEL', 'FAIL', 'REGISTER') NOT NULL,
-    command VARCHAR(50) NULL,
+    status ENUM('ON', 'OFF') NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (CCCD) REFERENCES User(CCCD) ON DELETE CASCADE
 );
