@@ -38,16 +38,16 @@ CREATE TABLE Control (
     device_type ENUM('door', 'light', 'fan') NOT NULL,
     device_id INT NOT NULL,
     status ENUM('ON', 'OFF') NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date DATE NOT NULL,
+    hour TIME NOT NULL,
     FOREIGN KEY (CCCD) REFERENCES User(CCCD) ON DELETE CASCADE
 );
 
 -- Bảng Notice (Thông báo)
 CREATE TABLE Notice (
     notice_id INT AUTO_INCREMENT PRIMARY KEY,
-    date DATE NOT NULL,
-    hour TIME NOT NULL,
     content TEXT NOT NULL,
     CCCD VARCHAR(20) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (CCCD) REFERENCES User(CCCD) ON DELETE CASCADE
 );

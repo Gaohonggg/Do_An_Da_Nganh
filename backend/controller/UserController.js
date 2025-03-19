@@ -45,6 +45,28 @@ class UserController {
         }
     }
 
+    getHistory = async (req, res) => {
+        try {
+            const check = await AuthService.check(req);
+            if (check.status) return res.status(200).json(check);
+            const result = await UserService.getHistory(req);
+            return res.status(200).send(result);
+        } catch(err) {
+            return res.status(404).json({status: false, error: err});
+        }
+    }
+
+    getNotice = async (req, res) => {
+        try {
+            const check = await AuthService.check(req);
+            if (check.status) return res.status(200).json(check);
+            const result = await UserService.getNotice(req);
+            return res.status(200).send(result);
+        } catch(err) {
+            return res.status(404).json({status: false, error: err});
+        }
+    }
+
 }
 
 module.exports = new UserController

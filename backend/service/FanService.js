@@ -43,10 +43,12 @@ class FanService {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
                 }
-                const [rac4] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, timestamp) VALUES (?, ?, ?, ?, ?)', [req.session.user.id, 'fan', id, status, support.getDate()]);
-                if (rac4.affectedRows == 0) {
-                    resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
-                    return;
+                if (status != rac1[rac1.length - 1].status) {
+                    const [rac4] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [req.session.user.id, 'fan', id, status, support.getDay(), support.getHour()]);
+                    if (rac4.affectedRows == 0) {
+                        resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
+                        return;
+                    }
                 }
                 resolve({ status: true, message: "Cập nhật thiết bị thành công" });
             }

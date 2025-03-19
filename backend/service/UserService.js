@@ -1,4 +1,5 @@
 const db = require('../data/db');
+const support = require('./support');
 
 class UserService {
     getInfo = async (req) => {
@@ -58,6 +59,52 @@ class UserService {
             } 
         });
     }
+
+    getHistory = async (req) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const [dataset] = await db.query('SELECT * FROM control WHERE CCCD = ?', [req.session.user.id]);
+                if (dataset.length == 0) { 
+                    resolve({ status: false, message: "Không tìm thấy tài khoản" });
+                    return;
+                }
+
+                resolve({ 
+                    status: true, 
+                    result: support.groupDataByDate(dataset)
+                });
+            }
+            catch (error) {
+                reject(error);
+            } 
+        });
+    }
+
+    getNotice = async (req) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const [dataset] = await db.query('SELECT content, timestamp FROM notice WHERE CCCD = ?', [req.session.user.id]);
+                if (dataset.length == 0) { 
+                    resolve({ status: false, message: "Không tìm thấy tài khoản" });
+                    return;
+                }
+
+                dataset.forEach((data) => {
+                    const date = new Date(data.timestamp);
+                    data.timestamp = date.toLocaleString("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).replace(",", "").replace(" a.m.", "");
+                })
+
+                resolve({ 
+                    status: true, 
+                    result: dataset
+                });
+            }
+            catch (error) {
+                reject(error);
+            } 
+        });
+    }
+
 }
 
 module.exports = new UserService

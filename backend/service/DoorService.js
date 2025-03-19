@@ -28,7 +28,7 @@ class DoorService {
                     resolve({ status: false, message: "Không tìm thấy thiết bị" });
                     return;
                 }
-                const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, timestamp) VALUES (?, ?, ?, ?, ?)', [req.session.user.id, 'door', id, status, support.getDate()]);
+                const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [req.session.user.id, 'door', id, status, support.getDay(), support.getHour()]);
                 if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
