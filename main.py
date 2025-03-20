@@ -23,13 +23,17 @@ class HandLandmarksDetector:
         return landmarks
 
 def main():
+    # Kiểm tra CUDA và thiết lập thiết bị
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("Using device:", device)
+
     # Tải nhãn từ file cấu hình
     LABEL_TAG = label_dict_from_config_file("hand_gesture.yaml")
     LABEL_NAMES = [name for _, name in LABEL_TAG.items()]
 
-    # Tải mô hình đã huấn luyện
-    model = NeuralNetwork()
-    model.load_state_dict(torch.load('./models/model_Hand_Gesture_MLP.pth'))
+    # Tải mô hình đã huấn luyện và chuyển sang thiết bị đã chọn
+    model = NeuralNetwork().to(device)
+    model.load_state_dict(torch.load('./models/model_Hand_Gesture_MLP.pth', map_location=device))
     model.eval()
 
     # Khởi tạo detector bàn tay
@@ -48,15 +52,16 @@ def main():
 
         # Phát hiện landmark bàn tay
         hands = hand_detector.detect_landmarks(frame)
-
         if hands:
             hand = hands[0]  # Chỉ lấy bàn tay đầu tiên
-            input_tensor = torch.tensor(hand, dtype=torch.float32).unsqueeze(0)  # Chuyển đổi thành Tensor
+            # Chuyển input thành tensor và sang thiết bị đã chọn
+            input_tensor = torch.tensor(hand, dtype=torch.float32).unsqueeze(0).to(device)
             prediction = model.predict_with_known_class(input_tensor)
 
             # Hiển thị nhãn dự đoán
             label = LABEL_NAMES[prediction.item()]
-            cv2.putText(frame, f"Prediction: {label}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            cv2.putText(frame, f"Prediction: {label}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX,
+                        1, (0, 255, 0), 2, cv2.LINE_AA)
         cv2.imshow("Hand Gesture Recognition", frame)
 
         # Nhấn phím 'q' để thoát
