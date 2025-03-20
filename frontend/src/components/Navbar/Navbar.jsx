@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets'
 import SearchBar from './SearchBar'
 import Dropdown from './Dropdown'
 import Notice from './Notice'
+import { Link } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -13,10 +14,12 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       
-      <div className="textlogo">
-        <img src={assets.logo} alt="" className="logo" /> 
-        BKSH
-        </div>      
+      <Link to='/'>
+        <div className="textlogo">
+          <img src={assets.logo} alt="" className="logo" /> 
+          BKSH
+        </div>  
+      </Link>    
       <SearchBar/>
 
       <div className="navbar-right">

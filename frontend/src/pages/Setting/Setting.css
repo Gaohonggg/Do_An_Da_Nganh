@@ -1,0 +1,47 @@
+.setting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 78vh;
+    background-color: #f4f4f4;
+  }
+  
+  .setting-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .camera-box {
+    width: 400px;
+    height: 300px;
+    background-color: #e6e6e6;
+    border: 2px dashed #bbb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .camera-box p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  
+  .add-face-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-face-btn:hover {
+    background-color: #0056b3;
+  }

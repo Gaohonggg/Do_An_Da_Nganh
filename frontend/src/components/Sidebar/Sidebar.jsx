@@ -1,37 +1,38 @@
 import React from 'react'
 import './Sidebar.css'
 import { assets } from '../../assets/assets'
-import { HomeOutlined , UserOutlined, ApartmentOutlined, CustomerServiceOutlined, SettingOutlined, UnorderedListOutlined} from '@ant-design/icons';
+import { HomeOutlined , ApartmentOutlined, CustomerServiceOutlined, SettingOutlined, UnorderedListOutlined} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 
-const Sidebar = () => {
+const Sidebar = ({isLoggedIn}) => {
   return (
     <div className='sideBar'>
         <div className="content">
             <ul>
                 <li>
-                    <a href="" className=""> <HomeOutlined/> Trang chủ </a>
+                    <Link to='/'> <HomeOutlined/> Trang chủ </Link>
                 </li>
                 <li>
-                    <a href="" className=""> <ApartmentOutlined /> Điều khiển thiết bị</a>
+                    <Link to='/device'> <ApartmentOutlined /> Điều khiển thiết bị </Link>
                 </li>
                 <li>
-                    <a href="" className=""> <UnorderedListOutlined /> Xem lịch sử</a>
+                    <Link to='/web-history'> <UnorderedListOutlined /> Xem lịch sử </Link>
                 </li>
                 <li>
                     <a href="" className=""><CustomerServiceOutlined /> Hỗ trợ</a>
                 </li>
                 <li>
-                    <a href="" className=""><SettingOutlined /> Cài đặt</a>
+                    <Link to='/setting'> <SettingOutlined /> Cài đặt</Link>
                 </li>
             </ul>
         </div>
         <div className="botbox">
-            <a href="" className="user-info"> 
+            <a href="/account" className="user-info"> 
                 <img src={assets.user} alt="" className='userimg'/>
                 <div className="details">
-                    <p className="name">Username</p>
-                    <p className="email">abc@example.com</p>
+                    <p className="name">{isLoggedIn ? "Username" : "Chưa đăng nhập"}</p>
+                    <p className="email">{isLoggedIn ? "abc@example.com" : "Bấm để đăng nhập"}</p>
                 </div>
             </a>
         </div>

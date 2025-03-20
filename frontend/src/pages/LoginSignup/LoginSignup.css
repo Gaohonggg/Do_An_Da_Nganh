@@ -20,19 +20,17 @@
     flex-direction: column;
     padding-left: 7%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 80px;
     width: 600px;
     background: #fff;
-    padding-bottom: 30px;
 }
 
-.loginsignup .header{
+.loginheader{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 9px;
     width: 100%;
-    margin-top: 30px;
 }
 
 .loginsignup .text{
