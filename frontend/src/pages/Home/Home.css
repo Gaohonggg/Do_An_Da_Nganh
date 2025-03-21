@@ -1,0 +1,48 @@
+.home {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .home .light,
+  .home .fan,
+  .home .history-log {
+    flex: 1;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .home .light {
+    background-color: #e0f7fa; /* Màu nền xanh nhạt */
+  }
+  
+  .home .fan {
+    background-color: #e8f5e9; /* Màu nền xanh lá nhạt */
+  }
+  
+  .home .history-log {
+    background-color: #fff3e0; /* Màu nền vàng nhạt */
+  }
+  
+  .home h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .home button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .home button:hover {
+    background-color: #0056b3;
+  }
+  
