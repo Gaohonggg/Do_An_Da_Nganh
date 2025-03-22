@@ -6,7 +6,6 @@ import { assets } from '../../assets/assets'
 
 const LoginSignup = () => {
   const [password, setPassword] = useState("");
-  const [visible, setVisible] = useState(true)
   const [action, setAction] = useState("Đăng nhập")
 
   const toggleAction = () => {
@@ -41,6 +40,7 @@ const LoginSignup = () => {
               {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
             </div>
           </div>
+
           {/* Nếu đang ở chế độ Đăng ký thì hiển thị trường Xác nhận mật khẩu */}
           {action === "Đăng ký" && (
             <>

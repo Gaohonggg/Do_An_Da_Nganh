@@ -18,7 +18,6 @@
 .loginsignup .container{
     display: flex;
     flex-direction: column;
-    padding-left: 7%;
     margin: auto;
     margin-top: 80px;
     width: 600px;
@@ -35,7 +34,7 @@
 
 .loginsignup .text{
     color: #397FDA;
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 700;
 }
 

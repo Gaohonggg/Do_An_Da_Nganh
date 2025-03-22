@@ -73,3 +73,18 @@
     color: #fff;
   }
   
+  .icon-box {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+  }
+  
+  .icon-lightbulb {
+    font-size: 100px; /* Phóng to biểu tượng */
+    color: #ffcc00; /* Màu vàng tượng trưng cho ánh sáng */
+  }

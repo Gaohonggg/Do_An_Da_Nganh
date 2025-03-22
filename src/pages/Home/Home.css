@@ -1,48 +1,93 @@
 .home {
-    display: flex;
-    gap: 16px;
-    padding: 16px;
-  }
-  
-  .home .light,
-  .home .fan,
-  .home .history-log {
-    flex: 1;
-    padding: 16px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .home .light {
-    background-color: #e0f7fa; /* Màu nền xanh nhạt */
-  }
-  
-  .home .fan {
-    background-color: #e8f5e9; /* Màu nền xanh lá nhạt */
-  }
-  
-  .home .history-log {
-    background-color: #fff3e0; /* Màu nền vàng nhạt */
-  }
-  
-  .home h2 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 12px;
-  }
-  
-  .home button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .home button:hover {
-    background-color: #0056b3;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  height: 350px; /* Chiều cao hình chữ nhật dọc */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  font-size: 5rem;
+  color: #007bff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.card.light.active .card-icon {
+  color: #f39c12; /* Màu vàng khi đèn bật */
+}
+
+.card.fan.active .card-icon {
+  color: #27ae60; /* Màu xanh khi quạt bật */
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}
+
+.card.light.active {
+  background-color: #fef5e7; /* Màu nền nhạt khi đèn bật */
+}
+
+.card.fan.active {
+  background-color: #e8f8f5; /* Màu nền nhạt khi quạt bật */
+}
+
+.fan-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.fan-controls button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fan-controls button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.fan-controls button:hover {
+  background-color: #d4d4d4;
+}

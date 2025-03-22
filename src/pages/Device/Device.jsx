@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Device.css';
+import { BulbOutlined } from '@ant-design/icons';
+
 
 const Device = () => {
   const [activeTab, setActiveTab] = useState('fan');
@@ -9,9 +11,9 @@ const Device = () => {
       case 'fan':
         return (
           <div className="controls">
-            <button>Quạt Mức 1</button>
-            <button>Quạt Mức 2</button>
-            <button>Quạt Mức 3</button>
+            <button>Mức 1</button>
+            <button>Mức 2</button>
+            <button>Mức 3</button>
             <button>Tắt</button>
           </div>
         );
@@ -26,12 +28,15 @@ const Device = () => {
         return (
           <div className="controls">
             <button>Mở cửa</button>
+            <button>Đóng cửa</button>
           </div>
         );
       default:
         return null;
     }
   };
+
+  
 
   return (
     <div className="device-container">
@@ -46,9 +51,16 @@ const Device = () => {
           Cửa
         </button>
       </div>
-      <div className="camera-box">
-        <p>Camera đang hoạt động...</p>
-      </div>
+      {activeTab === 'fan' || activeTab === 'door' ? (
+        <div className="camera-box">
+          <p>Camera đang hoạt động...</p>
+        </div>
+      ) : (
+        <div className="icon-box">
+          <BulbOutlined style={{ fontSize: '100px', color: '#ffcc00' }} />
+        </div>
+        
+        )}
       {renderControls()}
     </div>
   );
