@@ -24,15 +24,16 @@ class DoorService {
         const { id, status, door_id } = data;
         return new Promise(async (resolve, reject) => {
             try {
-                console.log(data)
-                const [rac1] = await db.query("SELECT status FROM control WHERE device_type = ? AND device_id = ?", ['door', door_id]);
-                console.log(rac1)
-                if (rac1.length != 0 && rac1[rac1.length - 1].status == status) { 
+                const [rac1] = await db.query("SELECT status FROM control WHERE device_type = 'door' AND device_id = ?", [door_id]);
+                if (rac1.length == 0) { 
+                    resolve({ status: false, message: "Không tìm thấy thiết bị" });
+                    return;
+                }
+                if (rac1[rac1.length - 1].status == status) {
                     resolve({ status: false, message: "Thiết bị đã cập nhật" });
                     return;
                 }
                 const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [id, 'door', door_id, status, support.getDay(), support.getHour()]);
-                console.log(id, 'door', door_id, status, support.getDay(), support.getHour())
                 if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
@@ -69,8 +70,8 @@ class DoorService {
         const { face_id, name } = data;
         return new Promise(async (resolve, reject) => {
             try {
-                const [rac] = await db.query('INSERT INTO door (face_id, name) VALUES (?, ?)', [face_id, name]);
-                if (rac.affectedRows == 0) {
+                const [rac2] = await db.query('INSERT INTO door (face_id, name) VALUES (?, ?)', [face_id, name]);
+                if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
                 }

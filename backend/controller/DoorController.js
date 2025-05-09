@@ -16,7 +16,7 @@ class DoorController {
     setDoor = async (req, res) => {
         try {
             var { id, status, door_id } = req.body;
-            if (status == null || (status != "ON" && status != "OFF")) return res.status(404).json({status: false, message: "Thiếu thông tin điều khiển"});;
+            if (status == null || (status != "ON" && status != "OFF")) return res.status(404).json({status: false, message: "Thiếu thông tin điều khiển"});
             const result = await DoorService.setDoor(req.body);
             return res.status(200).send(result);
         } catch(err) {
