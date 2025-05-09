@@ -1,0 +1,81 @@
+.dropDown{
+    position: absolute;
+    top: 4.9rem;
+    right: 1.7rem;
+    width: 300px; /* Đặt chiều rộng cố định */
+    max-width: 100%; /* Đảm bảo dropdown không vượt quá màn hình */
+    padding: 15px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid gray;
+    overflow: hidden; /* Ẩn phần bị tràn (nếu cần) */
+}
+
+.dropDown::before{
+    content: '';
+    position: absolute;
+    top: -0.7rem;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    background-color: white;
+    border-left:1px solid gray ;
+    border-top:1px solid gray ;
+}
+
+.dropDown li{
+    font-size: 20px;
+    padding:10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout-button {
+    font-size: 16px;
+    background-color: #f5f5f5; /* Màu nền nhẹ nhàng */
+    border: 1px solid #ddd; /* Viền mỏng */
+    border-radius: 8px; /* Góc bo tròn */
+    padding: 8px 16px; /* Khoảng cách bên trong */
+    color: #333; /* Màu chữ tối */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+  }
+  
+  .logout-button:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #fff; /* Màu chữ khi hover */
+    border-color: #007bff; /* Viền khi hover */
+  }
+  
+  .logout-button:active {
+    background-color: #0056b3; /* Màu khi click */
+    border-color: #0056b3; /* Viền khi click */
+  }
+
+@media (max-width:1050px) {
+    .dropDown{
+        top: 4.6rem;
+        right: 1.6rem;
+        width: 200px;
+    }
+    .dropDown li{
+        font-size: 18px;
+        padding:7px;
+    }
+}
+
+@media (max-width:900px) {
+    .dropDown{
+        top: 3.7rem;
+        right: 1.3rem;
+        width: 150px;
+    }
+    .dropDown li{
+        font-size: 14px;
+        padding:2px;
+    }
+}

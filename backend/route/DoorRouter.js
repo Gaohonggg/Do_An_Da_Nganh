@@ -1,0 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const DoorController = require('../controller/DoorController');
+
+router.get('/', DoorController.getDoor);
+router.post('/', DoorController.setDoor);
+router.get('/face', DoorController.getFace);
+router.post('/face', DoorController.setFace);
+
+module.exports = router
