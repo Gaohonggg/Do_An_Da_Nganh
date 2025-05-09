@@ -20,20 +20,20 @@ class DoorService {
         });
     }
 
-    setDoor = async (data, req) => {
-        const { id, status } = data;
+    setDoor = async (data) => {
+        const { id, status, door_id } = data;
         return new Promise(async (resolve, reject) => {
             try {
-                const [rac1] = await db.query("SELECT status FROM control WHERE device_type = 'door' AND device_id = ?", [1]);
+                const [rac1] = await db.query("SELECT status FROM control WHERE device_type = 'door' AND device_id = ?", [door_id]);
                 if (rac1.length == 0) { 
                     resolve({ status: false, message: "Không tìm thấy thiết bị" });
                     return;
                 }
-                if (rac1[rac1.length - 1] == status) {
+                if (rac1[rac1.length - 1].status == status) {
                     resolve({ status: false, message: "Thiết bị đã cập nhật" });
                     return;
                 }
-                const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [id, 'door', 1, status, support.getDay(), support.getHour()]);
+                const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [id, 'door', door_id, status, support.getDay(), support.getHour()]);
                 if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
@@ -67,10 +67,10 @@ class DoorService {
     }
 
     setFace = async (data, req) => {
-        const { id, face_id, name } = data;
+        const { face_id, name } = data;
         return new Promise(async (resolve, reject) => {
             try {
-                const [rac2] = await db.query('INSERT INTO door (door_id, face_id, name) VALUES (?, ?, ?)', [1, face_id, name]);
+                const [rac2] = await db.query('INSERT INTO door (face_id, name) VALUES (?, ?)', [face_id, name]);
                 if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
