@@ -287,7 +287,7 @@ async def process_face(
         
         # Check if the distance is less than threshold
         # we will  send the data to the server
-        if distances[0][0] > 0.3:
+        if distances[0][0] > 0.5:
             status = 'ON'
         else:
             status = 'OFF'
@@ -295,12 +295,12 @@ async def process_face(
         print("Received session ID:", sessionId)  # Kiểm tra xem có nhận được sessionId hay không
         print(distances[0][0])
         print(status)
-        print(type(sessionId))
         if status == 'ON':
             target_url = "http://localhost:3001/door"
             data = {
                 "id": sessionId,
                 "status": status,
+                "door_id": str(neighbors[0][0] + 1)
             }
             
             response = requests.post(target_url, json=data)
