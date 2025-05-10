@@ -1,0 +1,113 @@
+.account-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .account-info,
+  .change-password {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .account-info h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .account-info .info-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .account-info .label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .account-info .value {
+    color: #333;
+  }
+  
+  .change-password h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .change-password form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .change-password .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .change-password label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .change-password input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .change-password .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .change-password .submit-btn:hover {
+    background-color: #218838;
+  }
+  
+  .password-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .password-input input {
+    flex: 1;
+    padding-right: 40px; /* Chừa khoảng trống cho biểu tượng */
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #999;
+  }
+  
+  .eye-icon:hover {
+    color: #333;
+  }
+  
