@@ -63,11 +63,11 @@ class UserService {
     getHistory = async (req) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const [dataset] = await db.query('SELECT * FROM control WHERE CCCD = ?', [req.session.user.id]);
-                if (dataset.length == 0) { 
-                    resolve({ status: false, message: "Không tìm thấy tài khoản" });
-                    return;
-                }
+                    const [dataset] = await db.query('SELECT * FROM control WHERE CCCD = ?', [req.session.user.id]);
+                    if (dataset.length == 0) { 
+                        resolve({ status: false, message: "Không tìm thấy tài khoản" });
+                        return;
+                    }
 
                 resolve({ 
                     status: true, 
