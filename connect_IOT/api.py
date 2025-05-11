@@ -301,7 +301,11 @@ async def process_face(
             data = {
                 "id": sessionId,
                 "status": status,
+<<<<<<< HEAD
                 "door_id": str(neighbors[0][0] + 2)
+=======
+                "door_id": str(neighbors[0][0] + 1)
+>>>>>>> 95641a353cf540fb33ad4b1f369f62450966964f
             }
             
             response = requests.post(target_url, json=data)
