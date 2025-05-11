@@ -1,122 +1,133 @@
-.loginsignup .logo{
-    width: 20px;
+/* LoginSignup.css */
+
+/* Tổng thể */
+.loginsignup {
+    display: flex; /* Sử dụng Flexbox để sắp xếp ngang hàng */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: 100vh; /* Chiều cao toàn màn hình */
+    background-color: #f0f2f5; /* Nền sáng */
+    padding: 20px;
+    gap: 20px; /* Khoảng cách giữa form và hình ảnh */
 }
 
-.loginsignup{
-    display: flex;
-}
 
-.loginsignup .img{
-    margin: auto;
-    margin-top: 150px;
-    margin-right: 80px;
-    width: 680px;
-    height: 400px;
-    border-radius: 30px
-}
-
-.loginsignup .container{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 80px;
-    width: 600px;
-    background: #fff;
-}
-
-.loginheader{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
+/* Container chính của form */
+.container {
+    background: #ffffff; /* Nền trắng cho form */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    border-radius: 12px; /* Bo góc container */
+    padding: 30px;
     width: 100%;
+    max-width: 500px; /* Giới hạn chiều rộng */
 }
 
-.loginsignup .text{
-    color: #397FDA;
-    font-size: 40px;
-    font-weight: 700;
+/* Header của form */
+.loginheader {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.loginsignup .info{
-    font-size: 18px;
-    font-weight: 500;
+.loginheader .text {
+    font-size: 24px; /* Kích thước chữ lớn */
+    font-weight: bold; /* Đậm chữ */
+    color: #0077b6; /* Màu xanh dương nhấn mạnh */
 }
 
-.loginsignup .underline{
-    width: 61px;
-    height: 6px;
-    background: #397FDA;
-    border-radius: 9px;
+.loginheader .underline {
+    width: 50px;
+    height: 3px;
+    background-color: #0077b6; /* Gạch dưới màu xanh dương */
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
-.loginsignup .inputs{
-    margin-top: 55px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+/* Các trường input */
+.ant-form-item {
+    margin-bottom: 16px; /* Khoảng cách giữa các form item */
 }
 
-.loginsignup .input{
-    display: flex;
-    align-items: center;
-    margin:auto;
-    width: 480px;
-    height: 80px;
-    background: #eaeaea;
-    border-radius: 6px;
+.ant-form-item-label {
+    label {
+        font-size: 14px; /* Kích thước chữ nhỏ hơn một chút */
+        color: #333; /* Màu chữ tối */
+    }
 }
 
-.loginsignup .input img{
-    margin: 0px 30px;
+.ant-input,
+.ant-input-password {
+    border-radius: 8px; /* Bo góc */
+    border: 1px solid #ccc; /* Đường viền xám nhạt */
+    padding: 8px 12px; /* Khoảng cách bên trong */
+    font-size: 14px;
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
 }
 
-.loginsignup .input input{
-    height: 50px;
-    width: 400px;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #797979;
+.ant-input:focus,
+.ant-input-password:focus {
+    border-color: #0077b6; /* Đổi màu viền khi focus */
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3); /* Hiệu ứng focus */
+}
+
+/* Nút đăng nhập */
+.submit-container {
+    text-align: center;
+}
+
+.submit {
+    width: 100%; /* Nút chiếm toàn chiều rộng */
+    height: 45px;
+    background-color: #0077b6; /* Nền xanh */
+    color: #ffffff; /* Chữ trắng */
     font-size: 16px;
-}
-
-.loginsignup .forgot-password{
-    margin-top: 25px;
-    color: #797979;
-    font-size: 18px;
-}
-.loginsignup .forgot-password span{
-    color: #397FDA;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.loginsignup .signup{
-    margin-top: 15px;
-    color: #797979;
-    font-size: 18px;
+.submit:hover {
+    background-color: #005f8d; /* Màu xanh đậm hơn khi hover */
 }
 
-.loginsignup .signup span{
-    color: #397FDA;
-    cursor: pointer;
+/* Hình ảnh bên cạnh */
+.img {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 85vh;
+    height: auto;
+    border-radius: 12px; /* Bo góc cho ảnh */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng ảnh */
 }
 
-.loginsignup .submit-container{
-    display: flex;
-    margin: 50px auto;
+@media (max-width: 768px) {
+    .loginsignup {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .img {
+        max-width: 300px; /* Giảm kích thước ảnh trên màn hình nhỏ */
+    }
 }
 
-.loginsignup .submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px;
-    height: 59px;
-    color: #fff;
-    background: #397FDA;
-    border-radius: 50px;
-    font-size: 19px;
-    font-weight: 700;
-    cursor: pointer;
+.additional-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.additional-links a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.additional-links a:hover {
+    text-decoration: underline;
 }

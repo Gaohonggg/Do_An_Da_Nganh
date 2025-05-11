@@ -1,113 +1,158 @@
+/* Container chính */
 .account-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column; /* Chia thành các phần chính */
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần thông tin tài khoản */
+.account-info {
+  display: flex;
+  flex-wrap: wrap; /* Dàn ngang các mục */
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-info h2 {
+  width: 100%; /* Tiêu đề chiếm toàn bộ chiều ngang */
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.info-item {
+  flex: 1 1 calc(33.33% - 2rem); /* Mỗi mục chiếm 1/3 chiều ngang */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.info-item .label {
+  font-weight: bold;
+  color: #555;
+}
+
+.info-item .value {
+  color: #777;
+}
+
+/* Phần cập nhật thông tin */
+.update-info {
+  display: flex;
+  flex-direction: row; /* Dàn ngang hai bảng */
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-form {
+  flex: 1; /* Mỗi bảng chiếm 50% chiều ngang */
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-form h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Nút submit */
+.submit-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Input mật khẩu với biểu tượng */
+.password-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-input input {
+  flex: 1;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+}
+
+.eye-icon:hover {
+  color: #333;
+}
+
+/* Đảm bảo giao diện đẹp trên màn hình nhỏ */
+@media (max-width: 768px) {
+  .account-container {
+    flex-direction: column; /* Quay lại dọc trên màn hình nhỏ */
   }
-  
-  .account-info,
-  .change-password {
-    flex: 1;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-  }
-  
+
   .account-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    flex-direction: column; /* Dàn dọc các mục thông tin */
   }
-  
-  .account-info h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 16px;
+
+  .info-item {
+    flex: unset; /* Mỗi mục chiếm toàn bộ chiều ngang */
   }
-  
-  .account-info .info-item {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
+
+  .update-info {
+    flex-direction: column; /* Dàn dọc hai bảng */
   }
-  
-  .account-info .label {
-    font-weight: bold;
-    color: #555;
+
+  .update-form {
+    flex: unset; /* Mỗi bảng chiếm toàn bộ chiều ngang */
   }
-  
-  .account-info .value {
-    color: #333;
-  }
-  
-  .change-password h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  
-  .change-password form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .change-password .form-group {
-    margin-bottom: 16px;
-  }
-  
-  .change-password label {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
-  .change-password input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
-  .change-password .submit-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .change-password .submit-btn:hover {
-    background-color: #218838;
-  }
-  
-  .password-input {
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  
-  .password-input input {
-    flex: 1;
-    padding-right: 40px; /* Chừa khoảng trống cho biểu tượng */
-  }
-  
-  .eye-icon {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    color: #999;
-  }
-  
-  .eye-icon:hover {
-    color: #333;
-  }
-  
+}

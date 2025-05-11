@@ -1,21 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './WebHistory.css';
+import { getHistory } from '../../util/api';
 
 const WebHistory = () => {
-  const historyData = [
-    { id: 1, url: 'Bật đèn', date: '2025-03-19', time: '14:35' },
-    { id: 2, url: 'Bật quạt mức 4', date: '2025-03-18', time: '10:20' },
-    { id: 3, url: 'Mở cửa', date: '2025-03-17', time: '18:45' },
-  ];
+  const [historyData, setHistoryData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  // Fetch history data from API
+  useEffect(() => {
+    const fetchHistory = async () => {
+      try {
+        const response = await getHistory();
+        if (response?.status) {
+          setHistoryData(response.result); // Lưu dữ liệu lịch sử vào state
+        } else {
+          console.error('Failed to fetch history:', response?.message);
+        }
+      } catch (error) {
+        console.error('Error fetching history:', error);
+      } finally {
+        setLoading(false); // Tắt trạng thái loading
+      }
+    };
+
+    fetchHistory();
+  }, []);
+
+  if (loading) {
+    return <div className="loading">Đang tải dữ liệu...</div>;
+  }
 
   return (
     <div className="web-history-container">
-      <h2>Lịch sử thiết bị</h2>
+      <h2 className="history-title">Lịch sử thiết bị</h2>
       <div className="history-list">
-        {historyData.map((entry) => (
-          <div key={entry.id} className="history-item">
-            <p className="url"><strong>Thiết bị:</strong> <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.url}</a></p>
-            <p className="date-time"><strong>Ngày:</strong> {entry.date} <strong>Thời gian:</strong> {entry.time}</p>
+        {Object.entries(historyData).map(([date, events]) => (
+          <div key={date} className="history-date">
+            <h3 className="date-title">{date}</h3>
+            <div className="event-grid">
+              {events.map((event, index) => (
+                <div key={index} className="event-card">
+                  {event}
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

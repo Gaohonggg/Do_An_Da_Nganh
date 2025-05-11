@@ -1,49 +1,62 @@
 .web-history-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .web-history-container h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .history-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .history-item {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .history-item p {
-    margin: 5px 0;
-    font-size: 1rem;
-  }
-  
-  .history-item .url a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .history-item .url a:hover {
-    text-decoration: underline;
-  }
-  
-  .history-item .date-time {
-    color: #555;
-    font-size: 0.9rem;
-  }
-  
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto; /* Thêm thanh cuộn dọc */
+  max-height: 600px; /* Giới hạn chiều cao */
+}
+
+.history-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.history-date {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.date-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Tự động chia cột */
+  gap: 10px;
+}
+
+.event-card {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  margin-top: 50px;
+}

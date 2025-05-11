@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { notification } from 'antd';
 import { getId, getFaceId } from '../util/api';
+import './Camera.css'; // Import your CSS file for styling
 
 const Camera = ({ mode }) => {
     const videoRef = useRef(null);
@@ -43,7 +44,7 @@ const Camera = ({ mode }) => {
     const getSession = async () => {
         try {
             const response = await getId();
-            console.log("Raw response from getId:", response);
+            // console.log("Raw response from getId:", response);
             if (response?.status) {
                 console.log("Setting session:", response);
                 setSession(response);
@@ -77,11 +78,11 @@ const Camera = ({ mode }) => {
         try {
             // Gọi API getFaceId để lấy thông tin phiên hiện tại
             const response = await getFaceId(); 
-            console.log("Raw response từ getFaceId:", response);
+            // console.log("Raw response từ getFaceId:", response);
     
             if (response?.status) {
                 // Nếu API trả về thành công, thiết lập session
-                console.log("Thiết lập face:", response);
+                // console.log("Thiết lập face:", response);
                 setFace(response);
     
                 // Kiểm tra xem user ID có tồn tại trong phản hồi hay không
@@ -143,13 +144,13 @@ const Camera = ({ mode }) => {
                     endpoint = "http://localhost:8000/setting";
                 }
                 else if (mode === "door"){
-                    console.log(`Sending frame to ${endpoint} with faceID:`, (JSON.stringify(curfaceId.face_id)));
+                    // console.log(`Sending frame to ${endpoint} with faceID:`, (JSON.stringify(curfaceId.face_id)));
                     formData.append("faceId", JSON.stringify(curfaceId.face_id));
                     endpoint = "http://localhost:8000/checkin";
-                    console.log(formData)
+                    // console.log(formData)
                 }
 
-                console.log(`Sending frame to ${endpoint} with sessionId:`, session.user.id);
+                // console.log(`Sending frame to ${endpoint} with sessionId:`, session.user.id);
                 // console.log(`Sending frame to ${endpoint} with faceID:`, curfaceId);
 
                 try {
@@ -191,7 +192,7 @@ const Camera = ({ mode }) => {
             console.log("Camera started successfully");
             const sessionData = await getSession();
             const curFaceTest = await getFace();
-            console.log("Session data received:", sessionData);
+            // console.log("Session data received:", sessionData);
             if (!sessionData || !sessionData.user || !sessionData.user.id) {
                 console.error("No valid session user ID received");
                 notification.error({
@@ -200,14 +201,14 @@ const Camera = ({ mode }) => {
                 });
             }
             
-            console.log("Face data received:", curFaceTest);
-            if (!curfaceId) {
-                console.error("No valid session user faceID");
-                notification.error({
-                    message: 'Lỗi',
-                    description: 'Không thể lấy Face ID.',
-                });
-            }
+            // console.log("Face data received:", curFaceTest);
+            // if (!curfaceId) {
+            //     console.error("No valid session user faceID");
+            //     notification.error({
+            //         message: 'Lỗi',
+            //         description: 'Không thể lấy Face ID.',
+            //     });
+            // }
 
         } catch (error) {
             console.error("Error in handleStartCamera:", error);
@@ -238,26 +239,24 @@ const Camera = ({ mode }) => {
         switch (mode) {
             case "setting":
                 return (
-                    <div>
+                    <div className="setting-mode">
                         <h2>Thêm Khuôn Mặt</h2>
-                        <p>Hướng mặt vào camera và nhấn nút bên dưới để thêm.</p>
-                        <input
-                            type="text"
-                            value={currentName}
-                            onChange={(e) => setCurrentName(e.target.value)}
-                            placeholder="Nhập tên..."
-                        />
-                        <button onClick={isCameraOn ? stopCamera : handleStartCamera}>
-                            {isCameraOn ? "Tắt Camera" : "Bật Camera"}
-                        </button>
-                        {/* <div>
-                            <h3>Danh Sách Khuôn Mặt:</h3>
-                            <ul>
-                                a
-                                b
-                                c
-                            </ul>
-                        </div> */}
+                        <p>Nhập tên người dùng muốn thêm khuôn mặt vào và Bật Camera để bắt đầu.</p>
+                        <div className="input-group">
+                            <input
+                                type="text"
+                                value={currentName}
+                                onChange={(e) => setCurrentName(e.target.value)}
+                                placeholder="Nhập tên..."
+                                className="name-input"
+                            />
+                            <button
+                                onClick={isCameraOn ? stopCamera : handleStartCamera}
+                                className="camera-button"
+                            >
+                                {isCameraOn ? "Tắt Camera" : "Bật Camera"}
+                            </button>
+                        </div>
                     </div>
                 );
             case "door":
@@ -286,21 +285,22 @@ const Camera = ({ mode }) => {
     };
 
     return (
-        <div>
-            <br />
+    <div className="camera-container">
+        <div className={`camera-view ${isCameraOn ? "active" : "inactive"}`}>
             <video
                 ref={videoRef}
                 autoPlay
                 width="640"
                 height="480"
-                style={{ display: isCameraOn ? "block" : "none" }}
+                className={`camera-video ${isCameraOn ? "active" : "inactive"}`}
             ></video>
             <canvas ref={canvasRef} width="640" height="480" hidden></canvas>
-            <div>
-                {renderModeContent()}
-            </div>
         </div>
+        <div className="camera-controls">
+            {renderModeContent()}
+        </div>
+    </div>
     );
-};
+}
 
 export default Camera;

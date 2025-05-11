@@ -1,7 +1,7 @@
 .sideBar{
     background-color: #A5BFCC;
     width: 21%;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     position: absolute;
     transition: all 1s;

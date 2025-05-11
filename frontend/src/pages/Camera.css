@@ -1,0 +1,136 @@
+.camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.camera-view {
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.camera-view.active {
+    width: 640px;
+    height: 480px;
+}
+
+.camera-view.inactive {
+    width: 200px; /* Kích thước nhỏ khi camera tắt */
+    height: 150px;
+}
+
+.camera-video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-video.active {
+    display: block;
+}
+
+.camera-video.inactive {
+    display: none;
+}
+
+.camera-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.camera-controls h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.camera-controls p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.camera-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.camera-controls button:hover {
+    background-color: #0056b3;
+}
+
+/* Chế độ setting */
+.setting-mode {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.setting-mode h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.setting-mode p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.name-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    transition: border-color 0.3s ease;
+}
+
+.name-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.camera-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.camera-button:hover {
+    background-color: #0056b3;
+}

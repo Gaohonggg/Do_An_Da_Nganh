@@ -36,8 +36,8 @@
   }
   
   .camera-box {
-    width: 400px;
-    height: 300px;
+    width: 200px; /* Kích thước nhỏ khi camera tắt */
+    height: 150px;
     background-color: #e6e6e6;
     border: 2px dashed #bbb;
     border-radius: 12px;
@@ -45,12 +45,36 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  .camera-box p {
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+}
+
+.camera-box.active {
+    width: 640px; /* Kích thước lớn khi camera bật */
+    height: 480px;
+    border: 2px solid #007bff; /* Đổi màu viền khi bật */
+    background-color: #000; /* Nền đen khi bật camera */
+}
+
+.camera-box p {
     font-size: 1rem;
     color: #666;
-  }
+    text-align: center;
+}
+
+.camera-video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-video.active {
+    display: block;
+}
+
+.camera-video.inactive {
+    display: none;
+}
   
   .controls {
     display: flex;

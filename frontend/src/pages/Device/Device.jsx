@@ -11,24 +11,13 @@ const Device = () => {
       case 'fan':
         return (
           <div className="controls">
-            <button>Mức 1</button>
-            <button>Mức 2</button>
-            <button>Mức 3</button>
-            <button>Tắt</button>
-          </div>
-        );
-      case 'light':
-        return (
-          <div className="controls">
-            <button>Bật đèn</button>
-            <button>Tắt đèn</button>
+            
           </div>
         );
       case 'door':
         return (
           <div className="controls">
-            <button>Mở cửa</button>
-            <button>Đóng cửa</button>
+            
           </div>
         );
       default:
@@ -43,9 +32,6 @@ const Device = () => {
       <div className="tab-buttons">
         <button onClick={() => setActiveTab('fan')} className={activeTab === 'fan' ? 'active' : ''}>
           Quạt
-        </button>
-        <button onClick={() => setActiveTab('light')} className={activeTab === 'light' ? 'active' : ''}>
-          Đèn
         </button>
         <button onClick={() => setActiveTab('door')} className={activeTab === 'door' ? 'active' : ''}>
           Cửa

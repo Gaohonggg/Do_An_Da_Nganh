@@ -36,7 +36,7 @@
   color: #f39c12; /* Màu vàng khi đèn bật */
 }
 
-.card.fan.active .card-icon {
+.card.fan.spinning .card-icon {
   color: #27ae60; /* Màu xanh khi quạt bật */
 }
 
@@ -98,4 +98,25 @@
 }
 .card.door {
   transition: background-color 0.3s, border 0.3s;
+}
+/* Biểu tượng quạt */
+.fan-icon {
+  font-size: 90px;
+  color: #007bff;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng quay */
+.fan-icon.spinning {
+  animation: spin 1s linear infinite;
+}
+
+/* Định nghĩa animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

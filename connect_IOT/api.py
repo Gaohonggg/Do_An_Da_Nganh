@@ -167,7 +167,7 @@ async def process_frame(
 
         
         if label is not None:
-            target_url = "http://localhost:3001/fan"
+            target_url = "http://localhost:3001/fan/set"
             data = {
                 "id": 1,
                 "level": label,
@@ -294,13 +294,14 @@ async def process_face(
         
         print("Received session ID:", sessionId)  # Kiểm tra xem có nhận được sessionId hay không
         print(distances[0][0])
+        print(neighbors[0][0])
         print(status)
         if status == 'ON':
-            target_url = "http://localhost:3001/door"
+            target_url = "http://localhost:3001/door/set"
             data = {
                 "id": sessionId,
                 "status": status,
-                "door_id": str(neighbors[0][0] + 1)
+                "door_id": str(neighbors[0][0] + 2)
             }
             
             response = requests.post(target_url, json=data)

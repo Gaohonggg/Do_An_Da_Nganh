@@ -15,7 +15,7 @@ CREATE TABLE User (
 CREATE TABLE Door (
     door_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50),
-    face_id VARCHAR(200000) NOT NULL
+    face_id VARCHAR(16000) NOT NULL
     
 );
 

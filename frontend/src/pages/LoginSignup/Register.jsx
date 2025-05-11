@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Form, Input, notification } from 'antd';
 import { creatUserApi } from '../../util/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+import './LoginSignup.css'
 
 import { assets } from '../../assets/assets'
 
@@ -102,6 +103,11 @@ const Register = () => {
                 >
                     <Input.Password />
                 </Form.Item>
+                <div className="additional-links">
+                    <p>
+                        Đã có tài khoản? <Link to="/auth/log_in">Đăng nhập</Link>
+                    </p>
+                </div>  
 
                 <Form.Item className='submit-container'>
                     <Button type="primary" htmlType="submit" className='submit'>
