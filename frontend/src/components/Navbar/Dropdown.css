@@ -56,6 +56,31 @@
     border-color: #0056b3; /* Viền khi click */
   }
 
+.login-button {
+    font-size: 16px;
+    background-color: #f5f5f5; /* Màu nền nhẹ nhàng */
+    border: 1px solid #ddd; /* Viền mỏng */
+    border-radius: 8px; /* Góc bo tròn */
+    padding: 8px 16px; /* Khoảng cách bên trong */
+    color: #333; /* Màu chữ tối */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+  }
+  
+  .login-button:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #fff; /* Màu chữ khi hover */
+    border-color: #007bff; /* Viền khi hover */
+  }
+  
+  .login-button:active {
+    background-color: #0056b3; /* Màu khi click */
+    border-color: #0056b3; /* Viền khi click */
+  }
+  
 @media (max-width:1050px) {
     .dropDown{
         top: 4.6rem;
@@ -79,3 +104,4 @@
         padding:2px;
     }
 }
+

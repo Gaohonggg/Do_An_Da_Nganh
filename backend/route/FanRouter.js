@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const FanController = require('../controller/FanController');
 
-router.get('/', FanController.getFan);
-router.post('/', FanController.setFan);
+router.post('/get', FanController.getFan);
+router.post('/set', FanController.setFan);
 
 module.exports = router

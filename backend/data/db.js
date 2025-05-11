@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const connection = mysql.createConnection({
     host: "localhost",
-    user: "root",
+    user: "user1",
     password: "",
     database: "SmartHome"
 }).promise();

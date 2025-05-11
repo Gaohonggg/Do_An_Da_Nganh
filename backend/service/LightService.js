@@ -7,6 +7,7 @@ class LightService {
         const { id } = data;
         return new Promise(async (resolve, reject) => {
             try {
+                
                 const [status] = await db.query("SELECT status FROM control WHERE device_type = 'light' AND device_id = ?", [id]);
                 if (status.length == 0) { 
                     resolve({ status: false, message: "Không tìm thấy thiết bị" });
