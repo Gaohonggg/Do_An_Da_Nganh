@@ -11,6 +11,7 @@ const WebHistory = () => {
     const fetchHistory = async () => {
       try {
         const response = await getHistory();
+        console.log(response);
         if (response?.status) {
           setHistoryData(response.result); // Lưu dữ liệu lịch sử vào state
         } else {
@@ -42,7 +43,7 @@ const WebHistory = () => {
                 <div key={index} className="event-card">
                   {event}
                 </div>
-              ))}
+              ))} 
             </div>
           </div>
         ))}

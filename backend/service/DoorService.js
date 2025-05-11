@@ -34,6 +34,7 @@ class DoorService {
                     return;
                 }
                 const [rac2] = await db.query('INSERT INTO control (CCCD, device_type, device_id, status, date, hour) VALUES (?, ?, ?, ?, ?, ?)', [id, 'door', door_id, status, support.getDay(), support.getHour()]);
+                console.log(id, 'door', door_id, status, support.getDay(), support.getHour())
                 if (rac2.affectedRows == 0) {
                     resolve({ status: false, message: "Cập nhật thiết bị thất bại" });
                     return;
